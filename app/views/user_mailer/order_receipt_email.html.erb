@@ -1,12 +1,11 @@
-<section class="orders-show">
-
-  <header class="page-header">
-    <h1>Order #<%= @order.id %></h1>
-  </header>
-
-  <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Order confirmation for order# <%= @order.id %></h1>
+    <p>Thank you for shopping with us!</p>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -28,9 +27,6 @@
         <td><%= humanized_money_with_symbol @order.total %></td>
       </tr>
     </table>
-    <h3>Order confirmation has been emailed to <%= @order.email %></h3>
-  </div>
-  
-  <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
-</section>
+  </body>
+</html>
