@@ -28,4 +28,12 @@
 
   </article>
 
+  <article class="reviews">
+    <h3>Product Reviews</h3>
+
+      <% @reviews.each do |review| %>
+        <%= render 'review', review: review, user: User.find(id = review.user_id) %>
+      <% end %>
+
+  </article>
 </section>
