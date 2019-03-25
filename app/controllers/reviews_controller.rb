@@ -10,12 +10,10 @@ class ReviewsController < ApplicationController
     @review.description = review_input[:description]
     @review.user_id = current_user.id
 
-    @review.save
-
     if @review.save
-      redirect_to "/products/" + params[:product_id], notice: 'Review created!'
+      redirect_to @review.product, notice: 'Review created!'
     else
-      render "/products/" + params[:product_id]
+      redirect_to @review.product, notice: 'Review failed to create.'
     end
   end
 end
