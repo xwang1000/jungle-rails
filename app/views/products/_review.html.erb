@@ -1,4 +1,5 @@
 <article class="review">
   <h4 class="review-user"><%=user.first_name %> gave this product <%= review.rating%> out of 5.</h4>
   <p class="review-description">"<%= review.description %>"</p>
+  <p class="review-date">reviewed on <%= review.created_at %></p>
 </article>

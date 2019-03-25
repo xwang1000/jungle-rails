@@ -1,6 +1,10 @@
-<%# <% @review = Review.new %>
+<h3>Write a review</h3>
 <%= form_for [@product, @review] do |form| %>
-  <%# <%= form.label :rating %>
+  <%= form.label :rating %>
+  <%= form.select(:rating, [1, 2, 3, 4, 5]) %>
+  <br>
+  <%= form.label :description %>
+  <%= form.text_field :description %>
   <br>
   <%= form.submit%>  
 <% end %>
