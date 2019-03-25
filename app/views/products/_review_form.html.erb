@@ -1,6 +1,6 @@
-<%= form_for [@product, review] do |form| %>
-  <%= form.label :rating %>
-  <%= form.text_field :description%>
+<%# <% @review = Review.new %>
+<%= form_for [@product, @review] do |form| %>
+  <%# <%= form.label :rating %>
   <br>
   <%= form.submit%>  
 <% end %>
