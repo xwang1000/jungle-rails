@@ -51,6 +51,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'letter_opener'
   gem 'letter_opener_web', '~> 1.0'
+  gem 'rspec-rails', '~> 3.5'
   gem 'launchy'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
