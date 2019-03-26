@@ -4,7 +4,8 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-    
+    user.email.strip.downcase # strip spaces
+
     if user.save!
       UserMailer.welcome_email(user).deliver
       session[:user_id] = user.id

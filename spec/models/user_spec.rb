@@ -12,6 +12,11 @@ RSpec.describe User, type: :model do
       expect(@user.save).to eq true
     end
 
+    it 'returns false when saving a user with the email that has spaces on both ends' do
+      @user = User.new(first_name: 'nancy1234', last_name: 'Boba', email: '   boba@example.com   ', password: 'nancy1234', password_confirmation: 'nancy1234')
+      expect(@user.save).to eq false
+    end
+
     it 'returns false when saving users with the same email' do
       @user1 = User.new(first_name: 'nancy1234', last_name: 'Boba', email: 'boba@example.com', password: 'nancy1234', password_confirmation: 'nancy1234')
       @user2 = User.new(first_name: 'nancy1234', last_name: 'Boba', email: 'boba@example.com', password: 'nancy1234', password_confirmation: 'nancy1234')
@@ -49,6 +54,22 @@ RSpec.describe User, type: :model do
       password = 'nancy1234'
       expect(User.authenticate_with_credentials(email, password)).to eq @user
     end
+
+    it 'returns true when logging in with matched email and password, but email has spaces on both end' do
+      @user = User.new(first_name: 'nancy1234', last_name: 'Boba', email: 'boba@example.com', password: 'nancy1234', password_confirmation: 'nancy1234')
+      @user.save
+      email = '   boba@example.com   '
+      password = 'nancy1234'
+      expect(User.authenticate_with_credentials(email, password)).to eq @user
+    end 
+
+    it 'returns true when logging in with matched email and password, but email has different cases' do
+      @user = User.new(first_name: 'nancy1234', last_name: 'Boba', email: 'boba@example.com', password: 'nancy1234', password_confirmation: 'nancy1234')
+      @user.save
+      email = 'BOBA@example.COM'
+      password = 'nancy1234'
+      expect(User.authenticate_with_credentials(email, password)).to eq @user
+    end 
   end
 
 end
