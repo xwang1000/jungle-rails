@@ -39,4 +39,16 @@ RSpec.describe User, type: :model do
       expect(@user.save).to eq false
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    it 'returns true when logging in with matched email and password' do
+      @user = User.new(first_name: 'nancy1234', last_name: 'Boba', email: 'boba@example.com', password: 'nancy1234', password_confirmation: 'nancy1234')
+      @user.save
+
+      email = 'boba@example.com'
+      password = 'nancy1234'
+      expect(User.authenticate_with_credentials(email, password)).to eq @user
+    end
+  end
+
 end
