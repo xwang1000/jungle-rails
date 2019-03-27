@@ -59,3 +59,4 @@ bower.json
 # Ignore temporary letter_opener file
 temp/
 
+.DS_store
